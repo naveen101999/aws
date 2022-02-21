@@ -91,7 +91,7 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: fef8a509-ced8-430b-81d1-a353eb3cbb59
-  ELBV2TG4A6L0:
+    ELBV2TG4A6L0:
     Type: 'AWS::ElasticLoadBalancingV2::TargetGroup'
     Properties:
       Name: my-target-group-new11
@@ -101,7 +101,7 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: b943b41c-78a1-4c80-b3ab-ea3c57fca06f
-  ELBV2L42QE:
+    ELBV2L42QE:
     Type: 'AWS::ElasticLoadBalancingV2::Listener'
     Properties:
       LoadBalancerArn: !Ref ELBV2LB1HUDC
@@ -116,7 +116,7 @@ Resources:
     DependsOn:
       - ELBV2LB1HUDC
       - ELBV2TG4A6L0
-  ASLC55LJA:
+    ASLC55LJA:
     Type: 'AWS::AutoScaling::LaunchConfiguration'
     Properties:
       LaunchConfigurationName: my-lc-new11
@@ -169,7 +169,7 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 355e45e0-9d36-49a7-8d8d-fc3b7f760b9c
-  ASASG3CEB8:
+    ASASG3CEB8:
     Type: 'AWS::AutoScaling::AutoScalingGroup'
     Properties:
       AutoScalingGroupName: my-asg-new11
