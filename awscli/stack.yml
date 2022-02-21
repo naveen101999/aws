@@ -61,7 +61,7 @@ Metadata:
       dependson:
         - b943b41c-78a1-4c80-b3ab-ea3c57fca06f
 Resources:
- DependsOn:
+    DependsOn:
       - RDSDatabase
   RDSDatabase:
     Type: 'AWS::RDS::DBInstance'
