@@ -70,7 +70,7 @@ Resources:
       MasterUserPassword: Naveen1999
       DBInstanceClass: db.t2.micro
       DBName: clientmsdb
-      DBInstanceIdentifier: rds23
+      DBInstanceIdentifier: rds24
       VPCSecurityGroups:
         - sg-0b947349537e69ed2
       EngineVersion: 5.7
@@ -81,7 +81,7 @@ Resources:
   ELBV2LB1HUDC:
     Type: 'AWS::ElasticLoadBalancingV2::LoadBalancer'
     Properties:
-      Name: my-load-balancer-new
+      Name: my-load-balancer-new1
       Subnets:
         - subnet-010656811f3381d92
         - subnet-026d1c34b85e10605
@@ -92,7 +92,7 @@ Resources:
   ELBV2TG4A6L0:
     Type: 'AWS::ElasticLoadBalancingV2::TargetGroup'
     Properties:
-      Name: my-target-group-new
+      Name: my-target-group-new1
       Port: 80
       Protocol: HTTP
       VpcId: vpc-01ac3cdf74d6afae6
@@ -117,7 +117,7 @@ Resources:
   ASLC55LJA:
     Type: 'AWS::AutoScaling::LaunchConfiguration'
     Properties:
-      LaunchConfigurationName: my-lc-new
+      LaunchConfigurationName: my-lc-new1
       ImageId: ami-04505e74c0741db8d
       InstanceType: t2.micro
       IamInstanceProfile: demo-Role
@@ -166,11 +166,13 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 355e45e0-9d36-49a7-8d8d-fc3b7f760b9c
+    DependsOn:
+      - RDSDBI32QQE
   ASASG3CEB8:
     Type: 'AWS::AutoScaling::AutoScalingGroup'
     Properties:
-      AutoScalingGroupName: my-asg-new
-      LaunchConfigurationName: my-lc-new
+      AutoScalingGroupName: my-asg-new1
+      LaunchConfigurationName: my-lc-new1
       AvailabilityZones:
         - us-east-1d
         - us-east-1c
@@ -184,3 +186,4 @@ Resources:
         id: 1453d6ad-0801-4957-a2f6-c9cc5887b06b
     DependsOn:
       - ELBV2TG4A6L0
+      - ASLC55LJA
