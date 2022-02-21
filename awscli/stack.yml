@@ -80,7 +80,7 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 5a49fac4-991e-4070-916c-5e2a0b1311bd
-  ELBV2LB1HUDC:
+    ELBV2LB1HUDC:
     Type: 'AWS::ElasticLoadBalancingV2::LoadBalancer'
     Properties:
       Name: my-load-balancer-new11
