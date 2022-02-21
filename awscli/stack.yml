@@ -61,7 +61,9 @@ Metadata:
       dependson:
         - b943b41c-78a1-4c80-b3ab-ea3c57fca06f
 Resources:
-  RDSDBI32QQE:
+ DependsOn:
+      - RDSDatabase
+  RDSDatabase:
     Type: 'AWS::RDS::DBInstance'
     Properties:
       AllocatedStorage: 10
