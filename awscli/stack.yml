@@ -125,8 +125,8 @@ Resources:
       SecurityGroups:
         - sg-0b947349537e69ed2
       UserData:
-       - 'Fn::Base64': !Sub 
-            |
+        'Fn::Base64': !Sub 
+           - |
             #!/bin/bash
             sudo apt-get update -y
             sudo apt-get upgrade -y
