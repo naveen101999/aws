@@ -70,7 +70,7 @@ Resources:
       MasterUserPassword: Naveen1999
       DBInstanceClass: db.t2.micro
       DBName: cmsdb
-      DBInstanceIdentifier: rds20
+      DBInstanceIdentifier: rds21
       VPCSecurityGroups:
         - sg-0b947349537e69ed2
       EngineVersion: 5.7
@@ -81,7 +81,7 @@ Resources:
   ELBV2LB1HUDC:
     Type: 'AWS::ElasticLoadBalancingV2::LoadBalancer'
     Properties:
-      Name: my-load-balancer-new10
+      Name: my-load-balancer-new11
       Subnets:
         - subnet-010656811f3381d92
         - subnet-026d1c34b85e10605
@@ -92,7 +92,7 @@ Resources:
   ELBV2TG4A6L0:
     Type: 'AWS::ElasticLoadBalancingV2::TargetGroup'
     Properties:
-      Name: my-target-group-new10
+      Name: my-target-group-new11
       Port: 80
       Protocol: HTTP
       VpcId: vpc-01ac3cdf74d6afae6
@@ -117,7 +117,7 @@ Resources:
   ASLC55LJA:
     Type: 'AWS::AutoScaling::LaunchConfiguration'
     Properties:
-      LaunchConfigurationName: my-lc-new10
+      LaunchConfigurationName: my-lc-new11
       ImageId: ami-04505e74c0741db8d
       InstanceType: t2.micro
       IamInstanceProfile: demo-Role
@@ -127,51 +127,51 @@ Resources:
       UserData:
         'Fn::Base64': !Sub 
         - |
-            #!/bin/bash
-            sudo apt-get update -y
-            sudo apt-get upgrade -y
-            sudo wget https://www.apachefriends.org/xampp-files/8.1.2/xampp-linux-x64-8.1.2-0-installer.run
-            sudo chmod 755 xampp-linux-x64-8.1.2-0-installer.run
-            sudo ./xampp-linux-x64-8.1.2-0-installer.run
-            Y
-            Y
-            ENTER
-            Y
-            sudo apt install net-tools
-            sudo /opt/lampp/lampp start
-            sudo rm -rf /opt/lampp/htdocs/*
-            sudo chmod 777 /opt/lampp/htdocs
-            sudo git clone https://github.com/naveen101999/aws.git
-            sudo cp -r aws/cms/clientms/* /opt/lampp/htdocs
-            sudo chmod 777 /opt/lampp/htdocs/includes/dbconnection.php
-            sudo sed -i.bak 's/localhost/${endpoint}/g' /opt/lampp/htdocs/includes/dbconnection.php
-            sudo sed -i.bak 's/localhost/${endpoint}/g' /opt/lampp/htdocs/admin/includes/dbconnection.php
-            sudo chmod 777 /opt/lampp/etc/extra/httpd-xampp.conf
-            sudo sed -i.bak 's/local/all granted/g' /opt/lampp/etc/extra/httpd-xampp.conf
-            sudo chmod 755 /opt/lampp/etc/extra/httpd-xampp.conf
-            sudo /opt/lampp/lampp restart
-            sudo chmod 777 /opt/lampp/phpmyadmin/config.inc.php
-            sudo echo '$cfg["Servers"][$i]["verbose"] = "Amazon RDS";' >> /opt/lampp/phpmyadmin/config.inc.php
-            sudo echo '$cfg["Servers"][$i]["host"] = "${endpoint}";' >> /opt/lampp/phpmyadmin/config.inc.php
-            sudo echo '$cfg["Servers"][$i]["user"] = "admin";' >> /opt/lampp/phpmyadmin/config.inc.php
-            sudo echo '$cfg["Servers"][$i]["password"] = "Naveen1999";' >> /opt/lampp/phpmyadmin/config.inc.php
-            sudo echo '$cfg["Servers"][$i]["port"] = "3306";' >> /opt/lampp/phpmyadmin/config.inc.php
-            sudo echo '$cfg["Servers"][$i]["auth_type"] = "config";' >> /opt/lampp/phpmyadmin/config.inc.php
-            sudo echo '$cfg["Servers"][$i]["AllowNoPassword"] = true;' >> /opt/lampp/phpmyadmin/config.inc.php
-            sudo chmod 400 /opt/lampp/phpmyadmin/config.inc.php
-            sudo /opt/lampp/lampp restart
-            sudo apt install mysql-client-core-8.0
-            sudo mysql -h ${endpoint} -u admin --password=Naveen1999 clientmsdb < /aws/cms/SQL\ File/clientmsdb.sql
-            
-            - endpoint: !GetAtt RDSDatabase.Endpoint.Address
+          #!/bin/bash
+          sudo apt-get update -y
+          sudo apt-get upgrade -y
+          sudo wget https://www.apachefriends.org/xampp-files/8.1.2/xampp-linux-x64-8.1.2-0-installer.run
+          sudo chmod 755 xampp-linux-x64-8.1.2-0-installer.run
+          sudo ./xampp-linux-x64-8.1.2-0-installer.run
+          Y
+          Y
+          ENTER
+          Y
+          sudo apt install net-tools
+          sudo /opt/lampp/lampp start
+          sudo rm -rf /opt/lampp/htdocs/*
+          sudo chmod 777 /opt/lampp/htdocs
+          sudo git clone https://github.com/naveen101999/aws.git
+          sudo cp -r aws/cms/clientms/* /opt/lampp/htdocs
+          sudo chmod 777 /opt/lampp/htdocs/includes/dbconnection.php
+          sudo sed -i.bak 's/localhost/${endpoint}/g' /opt/lampp/htdocs/includes/dbconnection.php
+          sudo sed -i.bak 's/localhost/${endpoint}/g' /opt/lampp/htdocs/admin/includes/dbconnection.php
+          sudo chmod 777 /opt/lampp/etc/extra/httpd-xampp.conf
+          sudo sed -i.bak 's/local/all granted/g' /opt/lampp/etc/extra/httpd-xampp.conf
+          sudo chmod 755 /opt/lampp/etc/extra/httpd-xampp.conf
+          sudo /opt/lampp/lampp restart
+          sudo chmod 777 /opt/lampp/phpmyadmin/config.inc.php
+          sudo echo '$cfg["Servers"][$i]["verbose"] = "Amazon RDS";' >> /opt/lampp/phpmyadmin/config.inc.php
+          sudo echo '$cfg["Servers"][$i]["host"] = "${endpoint}";' >> /opt/lampp/phpmyadmin/config.inc.php
+          sudo echo '$cfg["Servers"][$i]["user"] = "admin";' >> /opt/lampp/phpmyadmin/config.inc.php
+          sudo echo '$cfg["Servers"][$i]["password"] = "Naveen1999";' >> /opt/lampp/phpmyadmin/config.inc.php
+          sudo echo '$cfg["Servers"][$i]["port"] = "3306";' >> /opt/lampp/phpmyadmin/config.inc.php
+          sudo echo '$cfg["Servers"][$i]["auth_type"] = "config";' >> /opt/lampp/phpmyadmin/config.inc.php
+          sudo echo '$cfg["Servers"][$i]["AllowNoPassword"] = true;' >> /opt/lampp/phpmyadmin/config.inc.php
+          sudo chmod 400 /opt/lampp/phpmyadmin/config.inc.php
+          sudo /opt/lampp/lampp restart
+          sudo apt install mysql-client-core-8.0
+          sudo mysql -h ${endpoint} -u admin --password=Naveen1999 clientmsdb < /aws/cms/SQL\ File/clientmsdb.sql
+          
+        - endpoint: !GetAtt RDSDatabase.Endpoint.Address
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 355e45e0-9d36-49a7-8d8d-fc3b7f760b9c
   ASASG3CEB8:
     Type: 'AWS::AutoScaling::AutoScalingGroup'
     Properties:
-      AutoScalingGroupName: my-asg-new10
-      LaunchConfigurationName: my-lc-new10
+      AutoScalingGroupName: my-asg-new11
+      LaunchConfigurationName: my-lc-new11
       AvailabilityZones:
         - us-east-1d
         - us-east-1c
