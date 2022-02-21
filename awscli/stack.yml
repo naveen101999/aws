@@ -63,7 +63,7 @@ Metadata:
 Resources:
     DependsOn:
       - RDSDatabase
-    
+    RDSDatabase:
     Type: 'AWS::RDS::DBInstance'
     Properties:
       AllocatedStorage: 10
