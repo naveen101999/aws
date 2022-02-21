@@ -61,9 +61,7 @@ Metadata:
       dependson:
         - b943b41c-78a1-4c80-b3ab-ea3c57fca06f
 Resources:
-    DependsOn:
-      - RDSDatabase
-    RDSDatabase:
+  RDSDBI32QQE:
     Type: 'AWS::RDS::DBInstance'
     Properties:
       AllocatedStorage: 10
@@ -71,8 +69,8 @@ Resources:
       MasterUsername: admin
       MasterUserPassword: Naveen1999
       DBInstanceClass: db.t2.micro
-      DBName: cmsdb
-      DBInstanceIdentifier: rds21
+      DBName: clientmsdb
+      DBInstanceIdentifier: rds22
       VPCSecurityGroups:
         - sg-0b947349537e69ed2
       EngineVersion: 5.7
@@ -83,7 +81,7 @@ Resources:
     ELBV2LB1HUDC:
     Type: 'AWS::ElasticLoadBalancingV2::LoadBalancer'
     Properties:
-      Name: my-load-balancer-new11
+      Name: my-load-balancer-new12
       Subnets:
         - subnet-010656811f3381d92
         - subnet-026d1c34b85e10605
@@ -94,7 +92,7 @@ Resources:
     ELBV2TG4A6L0:
     Type: 'AWS::ElasticLoadBalancingV2::TargetGroup'
     Properties:
-      Name: my-target-group-new11
+      Name: my-target-group-new12
       Port: 80
       Protocol: HTTP
       VpcId: vpc-01ac3cdf74d6afae6
@@ -119,7 +117,7 @@ Resources:
     ASLC55LJA:
     Type: 'AWS::AutoScaling::LaunchConfiguration'
     Properties:
-      LaunchConfigurationName: my-lc-new11
+      LaunchConfigurationName: my-lc-new12
       ImageId: ami-04505e74c0741db8d
       InstanceType: t2.micro
       IamInstanceProfile: demo-Role
@@ -163,17 +161,16 @@ Resources:
           sudo chmod 400 /opt/lampp/phpmyadmin/config.inc.php
           sudo /opt/lampp/lampp restart
           sudo apt install mysql-client-core-8.0
-          sudo mysql -h ${endpoint} -u admin --password=Naveen1999 clientmsdb < /aws/cms/SQL\ File/clientmsdb.sql
-          
-        - endpoint: !GetAtt RDSDatabase.Endpoint.Address
+          sudo mysql -h ${endpoint} -u admin --password=Naveen1999 clientmsdb < /aws/cms/SQL\ File/clientmsdb.sql    
+        - endpoint: !GetAtt RDSDBI32QQE.Endpoint.Address
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 355e45e0-9d36-49a7-8d8d-fc3b7f760b9c
     ASASG3CEB8:
     Type: 'AWS::AutoScaling::AutoScalingGroup'
     Properties:
-      AutoScalingGroupName: my-asg-new11
-      LaunchConfigurationName: my-lc-new11
+      AutoScalingGroupName: my-asg-new12
+      LaunchConfigurationName: my-lc-new12
       AvailabilityZones:
         - us-east-1d
         - us-east-1c
