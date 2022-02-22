@@ -72,7 +72,7 @@ Resources:
       DBName: clientmsdb
       DBInstanceIdentifier: rds24
       VPCSecurityGroups:
-        - sg-0b947349537e69ed2
+        - sg-03723ff32a5606bda
       EngineVersion: 5.7
       PubliclyAccessible: true
     Metadata:
@@ -83,8 +83,8 @@ Resources:
     Properties:
       Name: my-load-balancer-new1
       Subnets:
-        - subnet-010656811f3381d92
-        - subnet-026d1c34b85e10605
+        - subnet-08f3fd927977dc180
+        - subnet-02ac0c9e52da309ab
       IpAddressType: ipv4
     Metadata:
       'AWS::CloudFormation::Designer':
@@ -120,10 +120,10 @@ Resources:
       LaunchConfigurationName: my-lc-new1
       ImageId: ami-04505e74c0741db8d
       InstanceType: t2.micro
-      IamInstanceProfile: demo-Role
-      KeyName: Naveen06training
+      IamInstanceProfile: role_all
+      KeyName: Ec2all
       SecurityGroups:
-        - sg-0b947349537e69ed2
+        - sg-03723ff32a5606bda
       UserData:
         'Fn::Base64': !Sub 
         - |
@@ -174,8 +174,8 @@ Resources:
       AutoScalingGroupName: my-asg-new1
       LaunchConfigurationName: my-lc-new1
       AvailabilityZones:
-        - us-east-1d
-        - us-east-1c
+        - us-east-2b
+        - us-east-2c
       DesiredCapacity: 2
       MaxSize: 3
       MinSize: 2
