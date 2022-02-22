@@ -196,9 +196,9 @@ Resources:
             SecurityGroupIngress: 
               - 
                 CidrIp: "*.*.*.*/32"
-                FromPort: 3306
-                IpProtocol: "tcp"
-                ToPort: 3306
+                FromPort: 1
+                IpProtocol: "all"
+                ToPort: 225
             SecurityGroupEgress: 
               - 
                 CidrIp: "0.0.0.0/0"
