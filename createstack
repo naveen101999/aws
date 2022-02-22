@@ -5,7 +5,6 @@ pipeline{
         steps{
           sh "ls"
            sh "aws cloudformation create-stack --stack-name mystack40 --template-body file://awscli/stack.yml --region us-east-1" 
-           sh "aws ec2 create-key-pair --key-name MyKeyPair"
         }
        }
       }
